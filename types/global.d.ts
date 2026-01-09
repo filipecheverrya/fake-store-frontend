@@ -7,6 +7,10 @@ type ProductType = {
   description: string
   category: string
   image: string
+  rating: {
+    rate: bumber
+    count: nunmber
+  }
 }
 
 type ListProductsType = ProductType[]
