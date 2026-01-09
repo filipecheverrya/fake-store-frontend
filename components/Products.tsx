@@ -5,17 +5,17 @@ import Image from "next/image"
 import { use, useEffect, useMemo } from "react"
 
 type ProductsType = {
-  products: Promise<ListProductsType>
+  products: Promise<ListProductsType | undefined>
 }
 
 export default function Products({ products }: ProductsType) {
   const allProducts = use(products)
   const { state } = useFilter()
 
-  const filteredProducts = useMemo(() => allProducts.filter(item => {
+  const filteredProducts = useMemo(() => allProducts?.filter(item => {
     const categoryMatch = state.category.length === 0 || state.category.includes(item.category)
     return categoryMatch
-  }), [allProducts, state.category])
+  }) || [], [allProducts, state.category])
 
   const sortedProducts = useMemo(() => [...filteredProducts].sort((a, b) => {
     if (state.price[0] === 'ASC') return a.price - b.price

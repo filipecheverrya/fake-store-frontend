@@ -40,25 +40,25 @@ export default async function ProductPage({ params }: ProductPageType) {
         </Link>
       </nav>
       <h2 className="text-2xl md:text-4xl font-normal">
-        {data.title}
+        {data?.title}
       </h2>
       <picture className="block my-10">
         <Image
-          src={data.image}
-          alt={data.title}
+          src={data?.image || ''}
+          alt={data?.title || 'Product Image'}
           width={600}
           height={600}
           className="w-fit max-h-90 mx-auto"
         />
       </picture>
       <span className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-full uppercase text-sm w-fit">
-        {data.category}
+        {data?.category}
       </span>
       <p className="text-2xl font-semibold">
-        {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.price)}
+        {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data?.price || 0)}
       </p>
       <p className="text-base">
-        {data.description}
+        {data?.description}
       </p>
     </div>
   )

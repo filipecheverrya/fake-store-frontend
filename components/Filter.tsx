@@ -11,7 +11,7 @@ import Names from "./Names"
 import { useFilter } from "@/context/FilterContext"
 
 type FilterType = {
-  products: Promise<ListProductsType>
+  products: Promise<ListProductsType | undefined>
 }
 
 export default function Filter({ products }: FilterType) {
@@ -46,7 +46,7 @@ export default function Filter({ products }: FilterType) {
             </header>
             <div className="my-2">
               <p className="mb-2 text-base text-gray-500 font-semibold">Categories</p>
-              <Categories products={products} change={categoryChange} />
+              {products && <Categories products={products} change={categoryChange} />}
             </div>
             <div className="my-2">
               <p className="mb-2 text-base text-gray-500 font-semibold">Price</p>

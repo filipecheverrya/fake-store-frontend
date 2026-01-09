@@ -4,13 +4,13 @@ import { useFilter } from "@/context/FilterContext"
 import { use } from "react"
 
 type CategoriesType = {
-  products: Promise<ListProductsType>
+  products: Promise<ListProductsType | undefined>
   change: (ctg: string[]) => void
 }
 
 export default function Categories({ products, change }: CategoriesType) {
   const allProducts = use(products)
-  const uniqueSet = new Set(allProducts.map(item => item.category))
+  const uniqueSet = new Set(allProducts?.map(item => item.category))
   const categories = [...uniqueSet]
   const { state } = useFilter()
 

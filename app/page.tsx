@@ -12,11 +12,11 @@ export default function HomePage() {
         <h2 className="text-xl font-semibold">
           All Products
         </h2>
-        <Filter products={products} />
+        {products && <Filter products={products} />}
       </header>
       <div className="flex">
         <Suspense fallback={<div>Loading...</div>}>
-          <Products products={products} />
+          {products && <Products products={products} />}
         </Suspense>
       </div>
     </div>
