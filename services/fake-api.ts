@@ -1,4 +1,4 @@
-const BASE = 'https://fakestoreapi.com'
+const BASE = process.env.API_BASE_URL
 
 export async function getAllProducts(): Promise<ListProductsType> {
   const response = await fetch(`${BASE}/products`)
