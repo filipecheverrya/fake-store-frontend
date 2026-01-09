@@ -1,4 +1,4 @@
-const BASE = 'https://fakestoreapi.com'
+const BASE = process.env.NEXT_PUBLIC_VERCEL_URL
 
 export async function getAllProducts(): Promise<ListProductsType | undefined> {
   try {
