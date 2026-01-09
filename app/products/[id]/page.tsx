@@ -33,7 +33,7 @@ export default async function ProductPage({ params }: ProductPageType) {
   return (
     <div className='flex flex-col gap-4 px-4 md:gap-8 mb-12'>
       <nav className="mt-4">
-        <Link href="/" className="flex items-center gap-2 text-blue-500">
+        <Link href="/" className="flex items-center gap-2 text-blue-500" title="Go back to products">
           <span className="block w-9">
             <ArrowLeftIcon className="w-full text-blue-500" />
           </span>
@@ -55,7 +55,7 @@ export default async function ProductPage({ params }: ProductPageType) {
         {data.category}
       </span>
       <p className="text-2xl font-semibold">
-        {`$ ${data.price}`}
+        {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(data.price)}
       </p>
       <p className="text-base">
         {data.description}
