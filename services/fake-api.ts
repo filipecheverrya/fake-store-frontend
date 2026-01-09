@@ -1,4 +1,4 @@
-const BASE = process.env.API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'https://fakestoreapi.com'
+const BASE = 'https://fakestoreapi.com'
 
 export async function getAllProducts(): Promise<ListProductsType | undefined> {
   try {
