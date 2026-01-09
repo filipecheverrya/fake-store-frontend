@@ -11,7 +11,7 @@ import Names from "./Names"
 import { useFilter } from "@/context/FilterContext"
 
 type FilterType = {
-  products: Promise<ListProductsType | undefined>
+  products: ListProductsType
 }
 
 export default function Filter({ products }: FilterType) {

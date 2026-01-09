@@ -1,16 +1,14 @@
 'use client'
 
 import { useFilter } from "@/context/FilterContext"
-import { use } from "react"
 
 type CategoriesType = {
-  products: Promise<ListProductsType | undefined>
+  products: ListProductsType
   change: (ctg: string[]) => void
 }
 
 export default function Categories({ products, change }: CategoriesType) {
-  const allProducts = use(products)
-  const uniqueSet = new Set(allProducts?.map(item => item.category))
+  const uniqueSet = new Set(products?.map(item => item.category))
   const categories = [...uniqueSet]
   const { state } = useFilter()
 

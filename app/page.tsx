@@ -3,10 +3,9 @@ export const dynamic = 'force-dynamic'
 import Filter from "@/components/Filter"
 import Products from "@/components/Products"
 import { getAllProducts } from "@/services/fake-api"
-import { Suspense } from "react"
 
-export default function HomePage() {
-  const products = getAllProducts()
+export default async function HomePage() {
+  const products = await getAllProducts()
 
   return (
     <div className="font-sans mx-4 mt-4 mb-10">
@@ -17,9 +16,7 @@ export default function HomePage() {
         {products && <Filter products={products} />}
       </header>
       <div className="flex">
-        <Suspense fallback={<div>Loading...</div>}>
-          {products && <Products products={products} />}
-        </Suspense>
+        {products && <Products products={products} />}
       </div>
     </div>
   )
