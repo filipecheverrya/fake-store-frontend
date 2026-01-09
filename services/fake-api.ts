@@ -3,10 +3,10 @@ const BASE = process.env.NEXT_PUBLIC_VERCEL_URL
 export async function getAllProducts(): Promise<ListProductsType | undefined> {
   try {
     const response = await fetch(`${BASE}/products`, { cache: 'no-store' })
+    console.log('PROMISE => ' , response)
     if (!response.ok) {
       throw new Error('Failed to fetch get_all_products')
     }
-    console.log('CONTENT => ' , JSON.stringify(await response.json()))
     return response.json()
   } catch (err) {
     console.log('Failed to fetch get_all_products', err)
