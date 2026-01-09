@@ -1,6 +1,7 @@
 const BASE = process.env.NEXT_PUBLIC_VERCEL_URL
 
 export async function getAllProducts(): Promise<ListProductsType | undefined> {
+  console.log('URL => ' ,`${BASE}/products`)
   try {
     const response = await fetch(`${BASE}/products`, { cache: 'no-store' })
     if (!response.ok) {
