@@ -1,5 +1,3 @@
-'use client'
-
 import { useFilter } from "@/context/FilterContext"
 
 type CategoriesType = {
