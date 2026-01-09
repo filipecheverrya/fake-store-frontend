@@ -2,7 +2,7 @@ const BASE = process.env.API_BASE_URL
 
 export async function getAllProducts(): Promise<ListProductsType | undefined> {
   try {
-    const response = await fetch(`${BASE}/products`)
+    const response = await fetch(`${BASE}/products`, { cache: 'no-store' })
     if (!response.ok) {
       throw new Error('Failed to fetch get_all_products')
     }
@@ -14,7 +14,7 @@ export async function getAllProducts(): Promise<ListProductsType | undefined> {
 
 export async function getProductById({ id }: { id: string | string[] | undefined }): Promise<ProductType | undefined> {
   try {
-    const response = await fetch(`${BASE}/products/${id}`)
+    const response = await fetch(`${BASE}/products/${id}`, { cache: 'no-store' })
     if (!response.ok) {
       throw new Error('Failed to fetch get_product_by_id')
     }

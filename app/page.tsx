@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Filter from "@/components/Filter"
 import Products from "@/components/Products"
 import { getAllProducts } from "@/services/fake-api"
