@@ -1,7 +1,7 @@
 'use client'
 
 import { useFilter } from "@/context/FilterContext"
-import { use, useState } from "react"
+import { use } from "react"
 
 type CategoriesType = {
   products: Promise<ListProductsType>
@@ -13,12 +13,15 @@ export default function Categories({ products, change }: CategoriesType) {
   const uniqueSet = new Set(allProducts.map(item => item.category))
   const categories = [...uniqueSet]
   const { state } = useFilter()
-  const [selecteds, setSelecteds] = useState<string[]>(state.category)
 
   const handleClick = (item: string) => {
-    setSelecteds([item])
+    if (item === state.category[0]) {
+      change([])
+      return
+    }
     change([item])
   }
+
 
   return (
     <ul className="flex gap-2 flex-wrap">
@@ -26,7 +29,9 @@ export default function Categories({ products, change }: CategoriesType) {
         <li key={item}>
           <button
             type="button"
-            className={`rounded-full text-center px-4 py-1 border border-blue-500 ${selecteds.includes(item) ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'}`}
+            className={`rounded-full text-center px-4 py-1 border border-blue-500 ${
+              state.category.includes(item) ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'
+            }`}
             onClick={() => handleClick(item)}
           >
             {item}

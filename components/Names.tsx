@@ -1,5 +1,4 @@
 import { useFilter } from "@/context/FilterContext"
-import { useState } from "react"
 
 type NamesType = {
   change: (order: string[]) => void
@@ -8,12 +7,14 @@ type NamesType = {
 export default function Names({ change }: NamesType) {
   const orders = ['ASC', 'DESC']
   const { state } = useFilter()
-  const [selecteds, setSelecteds] = useState<string[]>(state.name)
 
   
   const handleClick = (item: string) => {
+    if (item === state.name[0]) {
+      change([])
+      return
+    }
     const result = item === 'ASC' ? ['ASC'] : ['DESC']
-    setSelecteds(result)
     change(result)
   }
 
@@ -21,7 +22,12 @@ export default function Names({ change }: NamesType) {
     <ul className="flex gap-2">
       {orders.map((order) => (
         <li key={order}>
-          <button className={`rounded-full text-center px-4 py-1 border border-blue-500 text-blue-500 ${selecteds.includes(order) ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'}`} onClick={() => handleClick(order)}>
+          <button 
+            className={`rounded-full text-center px-4 py-1 border border-blue-500 text-blue-500 ${
+              state.name.includes(order) ? 'bg-blue-500 text-white' : 'bg-white text-blue-500'
+            }`} 
+            onClick={() => handleClick(order)}
+          >
             {order}
           </button>
         </li>

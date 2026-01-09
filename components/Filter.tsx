@@ -35,7 +35,7 @@ export default function Filter({ products }: FilterType) {
       {visible && (
         <>
           <div className="bg-black opacity-70 fixed top-0 left-0 w-full h-lvh z-10" onClick={handleFilter}></div>
-          <div className="bg-white rounded-md p-4 absolute left-1/2 top-1/2 -translate-1/2 z-20 w-[90%] max-w-fit flex flex-col">
+          <div className="bg-white rounded-md p-4 absolute left-1/2 top-1/2 -translate-1/2 z-20 w-[90%] md:max-w-fit flex flex-col">
             <header className="flex items-center justify-between">
               <p className="text-xl font-bold">
                 Filter

@@ -18,6 +18,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button {
+  cursor: pointer;
+}
+
 :is(.swiper-button-prev, .swiper-button-next).swiper-button-disabled {
   @apply hidden!;
 }

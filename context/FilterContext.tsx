@@ -37,9 +37,9 @@ export function FilterProvider({ children }: FilterProviderProps) {
       name: filter.name,
     },
     actions: {
-      setName: (name: string[]) => setFilter({ ...filter, name }),
-      setPrice: (price: string[]) => setFilter({ ...filter, price }),
-      setCategory: (category: string[]) => setFilter({ ...filter, category })
+      setName: (name: string[]) => setFilter({ name, price: [], category: [] }),
+      setPrice: (price: string[]) => setFilter({ price, name: [], category: [] }),
+      setCategory: (category: string[]) => setFilter({ category, price: [], name: [] }),
     }
   }
 
