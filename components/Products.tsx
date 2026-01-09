@@ -1,3 +1,5 @@
+"use client"
+
 import { useFilter } from "@/context/FilterContext"
 import Image from "next/image"
 import { useMemo } from "react"
