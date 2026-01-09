@@ -1,10 +1,32 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeftIcon } from '@heroicons/react/20/solid'
+import { Metadata } from 'next'
 
 import { getProductById } from '@/services/fake-api'
 
-export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+type ProductPageType = {
+  params: Promise<{ id: string }>
+}
+
+export async function generateMetadata({ params }: ProductPageType): Promise<Metadata> {
+  const { id } = await params
+  const product = await getProductById({ id })
+
+  if (!product) {
+    return {
+      title: 'Product Not Found',
+      description: 'The requested product could not be found.'
+    }
+  }
+
+  return {
+    title: product.title,
+    description: product.description
+  }
+}
+
+export default async function ProductPage({ params }: ProductPageType) {
   const { id } = await params
   const data = await getProductById({ id })
 
@@ -12,7 +34,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     <div className='flex flex-col gap-4 px-4 md:gap-8 mb-12'>
       <nav className="mt-4">
         <Link href="/" className="flex items-center gap-2 text-blue-500">
-          <span className="block w-10">
+          <span className="block w-9">
             <ArrowLeftIcon className="w-full text-blue-500" />
           </span>
         </Link>

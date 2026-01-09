@@ -1,15 +1,19 @@
+import Filter from "@/components/Filter"
 import Products from "@/components/Products"
 import { getAllProducts } from "@/services/fake-api"
 import { Suspense } from "react"
 
-export default function Home() {
+export default function HomePage() {
   const products = getAllProducts()
 
   return (
-    <div className="font-sans ml-4 mt-4">
-      <h2 className="text-xl font-semibold mb-5">
-        Ofertas do dia
-      </h2>
+    <div className="font-sans mx-4 mt-4 mb-10">
+      <header className="flex justify-between items-center mb-6">
+        <h2 className="text-xl font-semibold">
+          All Products
+        </h2>
+        <Filter products={products} />
+      </header>
       <div className="flex">
         <Suspense fallback={<div>Loading...</div>}>
           <Products products={products} />
