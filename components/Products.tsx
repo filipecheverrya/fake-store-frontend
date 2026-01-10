@@ -52,7 +52,7 @@ export default function Products({ products }: ProductsType) {
   
   return (
     <>
-      <ul className='flex flex-wrap gap-2 md:gap-3'>
+      <ul className='flex flex-wrap gap-2 md:gap-3 justify-center'>
         {sortedProducts.map(item => <Template key={item.id} {...item} /> )}
       </ul>
     </>
